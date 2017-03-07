@@ -1,0 +1,101 @@
+/*
+ *	Keenan Johnstone
+ *	11119412
+ *	kbj182
+ *	cmpt470 Assignment 2
+ */
+
+
+PROBLEM 1
+=========
+
+part1
+-----
+
++----------
+Thoughts: USing zipWithIndex, we can get the index of the value, then by comparing the absolute distance on each point we can just sort the list and take the largest element's index (hence the (0)._2 at the end).
++----------
+
+scala> import scala.math._
+import scala.math._
+
+scala> val seq = Seq(1.0, 2.0, 3.0, 4.0, 10.0)
+seq: Seq[Double] = List(1.0, 2.0, 3.0, 4.0, 10.0)
+
+scala> def indexForFurthestElt(seq:Seq[Double], i:Int) = {
+     |     val refElt = seq(i);
+     |     seq.zipWithIndex.map(pair => (abs(pair._1-refElt), pair._2)).sortWith((pair1, pair2) => pair1._1 > pair2._1)(0)._2
+     | }
+indexForFurthestElt: (seq: Seq[Double], i: Int)Int
+
+scala> indexForFurthestElt(seq, 1)
+res33: Int = 4
+
+scala> indexForFurthestElt(seq, 4)
+res34: Int = 0
+
+part2
+-----
+
++----------
+Thoughts: Need to add requirements and use .ensuring for pre (require) and post (Ensuring) for post conditions
++----------
+
+scala> def indexForFurthestElt(seq:Seq[Double], i:Int) = {
+     |     require(seq.length >= 2);
+     |     require(i >= 0 && i < seq.length);
+     |     val refElt = seq(i);
+     |     seq.zipWithIndex.map(pair => (abs(pair._1-refElt), pair._2)).sortWith((pair1, pair2) => pair1._1 > pair2._1)(0)._2
+     | }.ensuring(iFurthest =>  abs(seq(iFurthest)-seq(i)) >= abs(seq(0)-seq(i)))
+
+part3
+-----
+
+scala> val vec1 = Vector(1.0, 2.0, 3.0)
+vec1: scala.collection.immutable.Vector[Double] = Vector(1.0, 2.0, 3.0)
+
+scala> val vec2 = Vector(4.0, 5.0, 6.0)
+vec2: scala.collection.immutable.Vector[Double] = Vector(4.0, 5.0, 6.0)
+
+scala> def vecSumSquareDiff(vec1:Vector[Double], vec2:Vector[Double]) = {
+     |   require(vec1.length == vec2.length);
+     |   vec1.zip(vec2).map(v => pow(abs(v._1 - v._2), 2)).sum
+     | }
+vecSumSquareDiff: (vec1: Vector[Double], vec2: Vector[Double])Double
+
+scala> vecSumSquareDiff(vec1, vec2)
+res53: Double = 27.0
+
+scala> vecSumSquareDiff(vec1, vec1)
+res54: Double = 0.0
+
+//Expected Error!
+scala> vecSumSquareDiff(vec1, Vector(3.0, 4.0))
+java.lang.IllegalArgumentException: requirement failed
+  at scala.Predef$.require(Predef.scala:264)
+  at .vecSumSquareDiff(<console>:17)
+  ... 30 elided
+
+part4
+-----
+
++----------
+Thoughts: Need to add requirements and use .ensuring for pre (require) and post (Ensuring) for post conditions. ( added requirements in part 3)
++----------
+
+scala> def vecSumSquareDiff(vec1:Vector[Double], vec2:Vector[Double]) = {
+     |   require(vec1.length == vec2.length);
+     |   vec1.zip(vec2).map(v => pow(abs(v._1 - v._2), 2)).sum
+     | }.ensuring(ret => ret >= 0)
+vecSumSquareDiff: (vec1: Vector[Double], vec2: Vector[Double])Double
+
+part5
+-----
+
+
+
+PROBLEM 2
+=========
+
+PROBLEM 3
+=========
