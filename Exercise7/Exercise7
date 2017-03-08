@@ -1,0 +1,22 @@
+/*
+ *	Keenan Johnstone
+ *	11119412
+ *	kbj182
+ *	cmpt470 Exercise 7
+ */
+
+ THOUGHT PROCESS
+ ===============
+ 1) Take two streams and return a stream of type T
+ 2) To merge, take the "Head of A", the "Head of B", and then recurse with the "Tails of A and B"
+
+//As with any problem I tackle it for one case first, in this case streams of Ints!
+
+scala> def mergeStream(a: Stream[Int], b: Stream[Int]):Stream[Int] = (a,b) match { case (s1, s2) => s1.head #:: s2.head #:: mergeStream(s1.tail,s2.tail) case _ => Stream.empty }
+mergeStream: (a: Stream[Int], b: Stream[Int])Stream[Int]
+
+scala> mergeStream(Stream.from(1), Stream.from(50)).take(10).toList
+res8: List[Int] = List(1, 50, 2, 51, 3, 52, 4, 53, 5, 54)
+
+// The empty case here being our end case, I was running into issues if the Stream did infact end before I was done reading it (as there was no final case whoops!), turns out cases work here really well!
+

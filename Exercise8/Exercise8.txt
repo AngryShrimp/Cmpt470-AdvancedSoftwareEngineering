@@ -1,0 +1,67 @@
+/*
+ *	Keenan Johnstone
+ *	11119412
+ *	kbj182
+ *	cmpt470 Exercise 8
+ */
+
+scala> import scala.util._
+import scala.util._
+
+scala> import scala.io._
+import scala.io._
+
+//I'm not sure if I'm using readline() wrong? But I can't see whatever it is I am typing, maybe it's a powershell thing? It still works, I just have no idea if I am typing the correct thing.
+
+scala> StdIn.readLine()
+res0: String = Hi!Hsadasda?
+
+scala> Try(StdIn.readLine().toDouble)
+res4: scala.util.Try[Double] = Success(0.369)
+
+scala> Try(StdIn.readLine().toDouble)
+res5: scala.util.Try[Double] = Failure(java.lang.NumberFormatException: For input string: "Hi")
+
+scala> for {
+v1 <-Try(StdIn.readLine().toDouble)
+v2 <-Try(StdIn.readLine().toDouble)
+output = v1+v2
+} yield output
+
+
+// I typed in here 1.5 \n 3.6
+
+res8: scala.util.Try[Double] = Success(5.1)
+
+//For Part 2 the division needs to be in a try statement also incase we go to divide by 0
+
+scala> for {
+v1 <-Try(StdIn.readLine().toInt)
+v2 <-Try(StdIn.readLine().toInt)
+output = Try(v1/v2)
+} yield output
+
+// I typed 10 \n 2
+
+res11: scala.util.Try[scala.util.Try[Int]] = Success(Success(5))
+
+//Trying dividing by 0 yeilds:
+
+res12: scala.util.Try[scala.util.Try[Int]] = Success(Failure(java.lang.ArithmeticException: / by zero))
+
+//Trying a string instead of an int for the first value:
+
+res13: scala.util.Try[scala.util.Try[Int]] = Failure(java.lang.NumberFormatException: For input string: "str")
+
+scala> for {
+v1 <-Try(StdIn.readLine().toDouble)
+v2 <-Try(StdIn.readLine().toDouble)
+v3 <-Try(StdIn.readLine().toDouble)
+output = v1+v2+v3
+} yield output
+
+//I typed 1.5 \n 3.0 \n 4.55
+
+res14: scala.util.Try[Double] = Success(9.05)
+
+//For going up to 4 and 5 values you would simply add more "vx <-Try(StdIn.readLine().toDouble)" lines, but I feel this could get clunky fast, ther e is probably a better way, but with my knowledge Scala currenty I wouldnt know atm.

@@ -1,0 +1,65 @@
+/*
+ *	Keenan Johnstone
+ *	11119412
+ *	kbj182
+ *	cmpt470 Exercise 6
+ */
+
+///// Makeing the derivative calculation that was given to us
+
+scala> def deriv(f: Double => Double, x: Double, e: Double) = (f(x+e)-f(x))/e
+deriv: (f: Double => Double, x: Double, e: Double)Double
+
+///// I forced the typing to double, becase sometimes it would type it as an INT
+
+scala> def f1(x: Double) = 1:Double
+f1: (x: Double)Double
+
+scala> def f2(x: Double) = x:Double
+f2: (x: Double)Double
+
+scala> def f3(x: Double) = 2*x:Double
+f3: (x: Double)Double
+
+scala> def f4(x: Double) = x*x:Double
+f4: (x: Double)Double
+
+scala> def f5(x: Double) = scala.math.exp(x):Double
+f5: (x: Double)Double
+
+///// Im sure there is a better way to create this vector
+
+scala> val vec = Vector(-1.0, -0.75, -0.5, -0.25, 0.0, 0.25, 0.5, 0.75, 1.0)
+vec: scala.collection.immutable.Vector[Double] = Vector(-1.0, -0.75, -0.5, -0.25, 0.0, 0.25, 0.5, 0.75, 1.0)
+
+///// MAPING TIME
+///// F1 Makes sense, derivative of a horizontal line is 0
+
+scala> vec.map(x => deriv(f1, x, 0.001))
+res11: scala.collection.immutable.Vector[Double] = Vector(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+
+///// F2 also makes sense, derivative of a line is just its slope, in this case its 1
+
+scala> vec.map(x => deriv(f2, x, 0.001))
+res12: scala.collection.immutable.Vector[Double] = Vector(1.0000000000000009, 1.0000000000000009, 1.0000000000000009, 1.
+0000000000000009, 1.0, 1.0000000000000009, 1.0000000000000009, 1.0000000000000009, 0.9999999999998899)
+
+///// F3 is good too! Same as above, just a slope of 2 instead
+
+scala> vec.map(x => deriv(f3, x, 0.001))
+res13: scala.collection.immutable.Vector[Double] = Vector(2.0000000000000018, 2.0000000000000018, 2.0000000000000018, 2.
+0000000000000018, 2.0, 2.0000000000000018, 2.0000000000000018, 2.0000000000000018, 1.9999999999997797)
+
+///// F4 also is good! The slope of a standard parabola is mirrored around the vertical axis, so by comparing the first and last point and moving towards 0 the points have similar derivative!
+
+scala> vec.map(x => deriv(f4, x, 0.001))
+res14: scala.collection.immutable.Vector[Double] = Vector(-1.998999999999973, -1.499000000000028, -0.9989999999999999, -
+0.49899999999999944, 0.001, 0.5010000000000014, 1.0009999999999741, 1.5009999999999746, 2.0009999999996975)
+
+///// The derivative of e^x will approach 0 as we go more negative and approach infinity as we go positive, and at x=0 will be 1 and at x=1 will be e, which is what we get!
+
+scala> vec.map(x => deriv(f5, x, 0.001))
+res15: scala.collection.immutable.Vector[Double] = Vector(0.3680634422205675, 0.47260281476485533, 0.6068340261562444, 0
+.7791903132955413, 1.0005001667083846, 1.2846676434539184, 1.6495459061909301, 2.1180588695424163, 2.7196414225332255)
+
+///// There are some small discrepancies, this may be due to the nature of the value for e (maybe it should be smaller) but for the most part gives fairly decent values!

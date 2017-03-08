@@ -1,0 +1,117 @@
+/*
+ *	Keenan Johnstone
+ *	11119412
+ *	kbj182
+ *	cmpt470 Exercise 5
+ */
+
+THOUGHT PROCESS - Counting the number of times a word appears
+
+1) Import
+2) Break the now MASSIVE string into words where a word is defined as a continious sequence of words where the letters are only a-z or A-Z
+3) Filter out the words we ARENT looking for 
+4) Count!
+
+NOTE - 2,3, and 4 should all happen in one line
+	 - Only step 1 should happen alone, though could probably be added in
+
+=====================PART A======================
+THOUGHT PROCESS - Counting the number of times a word appears
+
+1) Import
+2) Break the now MASSIVE string into words where a word is defined as a continious sequence of words where the letters are only a-z or A-Z
+3) Filter out the words we ARENT looking for 
+4) Count!
+
+NOTE - 2,3, and 4 should all happen in one line
+	 - Only step 1 should happen alone, though could probably be added in
+-------------------------------------------------
+
+scala> val lines = scala.io.Source.fromFile("document.txt").mkString
+lines: String =
+"The Design and Use of a Smartphone Data
+Collection Tool and Accompanying Configuration
+Language
+..."
+
+scala> lines.toLowerCase.split("[^a-zA-Z]+").filter(_ == "providing").groupBy(identity).mapValues(_.size)
+
+res6: scala.collection.immutable.Map[String,Int] = Map(providing -> 13)
+
+///// Here I used "providing", which could be replaced with anything OR the .filter(...) could be removed and the WHOLE thing returned (which gets truncated due to it's length)
+
+scala> lines.toLowerCase.split("[^a-zA-Z]+").groupBy(identity).mapValues(_.size)
+
+res7: scala.collection.immutable.Map[String,Int] = Map(pathogens -> 2, forgotten -> 4, embedded -> 11, rate -> 10, asser
+t -> 1, submitted -> 3, generalize -> 1, abstraction -> 30, remarked -> 1, ers -> 4, michael -> 6, uenza -> 9, snapped -
+> 1, exploit -> 5, clauses -> 18, associations -> 1, glean -> 1, locations -> 17, contracts -> 1, scenario -> 1, identi
+-> 45, ideas -> 4, static -> 9, epidemiologists -> 1, retasked -> 1, particularly -> 9, used -> 173, franklin -> 2, gure
+s -> 1, rhee -> 1, averages -> 1, allowed -> 19, automatic -> 2, reference -> 11, widely -> 4, meuter -> 1, singlestudyc
+apabilities -> 1, e -> 201, conversion -> 1, workshop -> 8, providing -> 13, ethology -> 2, writing -> 1, sens -> 1, lau
+nch -> 3, raleigh -> 1, fashion -> 9, solitary -> 1, explore -> 2, accommodat...
+
+///// These lines Cooooould do the import in a single line too, but they get unwieldly, they are below though (they work the same as above, but I didnt want to flood this file)
+
+scala.io.Source.fromFile("document.txt").mkString.toLowerCase.split("[^a-zA-Z]+").filter(_ == "providing").groupBy(identity).mapValues(_.size)
+
+scala.io.Source.fromFile("document.txt").mkString.toLowerCase.split("[^a-zA-Z]+").groupBy(identity).mapValues(_.size)
+
+=====================PART B======================
+THOUGHT PROCESS - Count how many words there are of a certain length
+1) Import
+2) Split into words
+3) Filter out the ones that arent of the length
+4) Sum
+-------------------------------------------------
+
+///// This counts how many words of length 5 there are, like before 
+
+scala> lines.toLowerCase.split("[^a-zA-Z]+").filter(_.length == 5).length
+res19: Int = 3967
+
+///// For doing it on the entire array however groupBy is really useful here, rather than identity, I'll use _.size, or rather group by the sizes!
+
+scala> lines.toLowerCase.split("[^a-zA-Z]+").groupBy(_.length).mapValues(_.s
+ize)
+res23: scala.collection.immutable.Map[Int,Int] = Map(5 -> 3967, 10 -> 1941, 24 -> 3, 37 -> 2, 25 -> 2, 14 -> 154, 20 ->
+8, 29 -> 1, 1 -> 1741, 6 -> 3841, 28 -> 2, 21 -> 6, 9 -> 1967, 13 -> 410, 2 -> 6093, 32 -> 1, 34 -> 1, 45 -> 1, 17 -> 18
+, 22 -> 3, 27 -> 2, 12 -> 695, 7 -> 3663, 39 -> 1, 3 -> 6291, 18 -> 5, 16 -> 47, 31 -> 1, 11 -> 1295, 43 -> 2, 23 -> 3,
+8 -> 3300, 36 -> 1, 30 -> 2, 19 -> 8, 4 -> 5883, 15 -> 35)
+
+///// Here are the "single line" versions of these lines
+
+scala.io.Source.fromFile("document.txt").mkString.toLowerCase.split("[^a-zA-Z]+").filter(_.length == 5).length
+
+scala.io.Source.fromFile("document.txt").mkString.toLowerCase.split("[^a-zA-Z]+").groupBy(_.length).mapValues(_.size)
+
+
+
+
+=====================PART C======================
+
+scala.io.Source.fromFile("document.txt").mkString.toLowerCase.split("[^a-zA-Z]+").groupBy(identity).mapValues(_.size).toSeq.sortWith((pair1, pair2)=> pair1._2 > pair2._2)
+
+///// REsults in...
+
+scala> scala.io.Source.fromFile("document.txt").mkString.toLowerCase.split("[^a-zA-Z]+").groupBy(identity).mapValues(_.
+ize).toSeq.sortWith((pair1, pair2)=> pair1._2 > pair2._2)
+res21: Seq[(String, Int)] = Vector((the,1715), (and,1301), (to,1278), (of,1067), (a,891), (data,720), (in,710), (be,493
+, (for,466), (is,442), (that,348), (are,342), (can,291), (as,281), (with,279), (this,278), (on,252), (system,224), (it,
+21), (by,218), (e,201), (or,197), (these,191), (s,187), (which,184), (task,182), (sensor,180), (used,173), (an,169), (i
+pi,157), (language,155), (collection,154), (not,141), (from,140), (they,139), (use,139), (their,130), (con,118), (speci
+117), (systems,116), (such,114), (seddacco,111), (g,111), (was,109), (tasks,105), (health,103), (when,102), (have,101),
+(its,100), (network,99), (logger,96), (has,91), (work,88), (user,88), (domain,87), (based,85), (if,85), (new,83), (othe
+,83), (i,82), (networks,79), (location,77), (tools,75), (information,74), (c,...
+scala>
+
+///// And then this:
+
+scala.io.Source.fromFile("document.txt").mkString.toLowerCase.split("[^a-zA-Z]+").groupBy(_.length).mapValues(_.size).toSeq.sortWith((pair1, pair2)=> pair1._2 > pair2._2)
+
+///// Yields this:
+
+scala> scala.io.Source.fromFile("document.txt").mkString.toLowerCase.split("[^a-zA-Z]+").groupBy(_.length).mapValues(_.s
+ize).toSeq.sortWith((pair1, pair2)=> pair1._2 > pair2._2)
+res24: Seq[(Int, Int)] = Vector((3,6291), (2,6093), (4,5883), (5,3967), (6,3841), (7,3663), (8,3300), (9,1967), (10,1941
+), (1,1741), (11,1295), (12,695), (13,410), (14,154), (16,47), (15,35), (17,18), (20,8), (19,8), (21,6), (18,5), (24,3),
+ (22,3), (23,3), (37,2), (25,2), (28,2), (27,2), (43,2), (30,2), (29,1), (32,1), (34,1), (45,1), (39,1), (31,1), (36,1))
