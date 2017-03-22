@@ -1,0 +1,135 @@
+/*
+ *	Keenan Johnstone
+ *	11119412
+ *	kbj182
+ *	cmpt470 Assignment 2
+ */
+
+
+PROBLEM 1
+=========
+
+part1
+-----
+
++----------
+Thoughts: USing zipWithIndex, we can get the index of the value, then by comparing the absolute distance on each point we can just sort the list and take the largest element's index (hence the (0)._2 at the end).
++----------
+
+scala> import scala.math._
+import scala.math._
+
+scala> val seq = Seq(1.0, 2.0, 3.0, 4.0, 10.0)
+seq: Seq[Double] = List(1.0, 2.0, 3.0, 4.0, 10.0)
+
+scala> def indexForFurthestElt(seq:Seq[Double], i:Int) = {
+     |     val refElt = seq(i);
+     |     seq.zipWithIndex.map(pair => (abs(pair._1-refElt), pair._2)).sortWith((pair1, pair2) => pair1._1 > pair2._1)(0)._2
+     | }
+indexForFurthestElt: (seq: Seq[Double], i: Int)Int
+
+scala> indexForFurthestElt(seq, 1)
+res33: Int = 4
+
+scala> indexForFurthestElt(seq, 4)
+res34: Int = 0
+
+part2
+-----
+
++----------
+Thoughts: Need to add requirements and use .ensuring for pre (require) and post (Ensuring) for post conditions
++----------
+
+scala> def indexForFurthestElt(seq:Seq[Double], i:Int) = {
+     |     require(seq.length >= 2);
+     |     require(i >= 0 && i < seq.length);
+     |     val refElt = seq(i);
+     |     seq.zipWithIndex.map(pair => (abs(pair._1-refElt), pair._2)).sortWith((pair1, pair2) => pair1._1 > pair2._1)(0)._2
+     | }.ensuring(iFurthest =>  abs(seq(iFurthest)-seq(i)) >= abs(seq(0)-seq(i)))
+
+part3
+-----
+
+scala> val vec1 = Vector(1.0, 2.0, 3.0)
+vec1: scala.collection.immutable.Vector[Double] = Vector(1.0, 2.0, 3.0)
+
+scala> val vec2 = Vector(4.0, 5.0, 6.0)
+vec2: scala.collection.immutable.Vector[Double] = Vector(4.0, 5.0, 6.0)
+
+scala> def vecSumSquareDiff(vec1:Vector[Double], vec2:Vector[Double]) = {
+     |   require(vec1.length == vec2.length);
+     |   vec1.zip(vec2).map(v => pow(abs(v._1 - v._2), 2)).sum
+     | }
+vecSumSquareDiff: (vec1: Vector[Double], vec2: Vector[Double])Double
+
+scala> vecSumSquareDiff(vec1, vec2)
+res53: Double = 27.0
+
+scala> vecSumSquareDiff(vec1, vec1)
+res54: Double = 0.0
+
+//Expected Error!
+scala> vecSumSquareDiff(vec1, Vector(3.0, 4.0))
+java.lang.IllegalArgumentException: requirement failed
+  at scala.Predef$.require(Predef.scala:264)
+  at .vecSumSquareDiff(<console>:17)
+  ... 30 elided
+
+part4
+-----
+
++----------
+Thoughts: Need to add requirements and use .ensuring for pre (require) and post (Ensuring) for post conditions. ( added requirements in part 3)
++----------
+
+scala> def vecSumSquareDiff(vec1:Vector[Double], vec2:Vector[Double]) = {
+     |   require(vec1.length == vec2.length);
+     |   vec1.zip(vec2).map(v => pow(abs(v._1 - v._2), 2)).sum
+     | }.ensuring(ret => ret >= 0)
+vecSumSquareDiff: (vec1: Vector[Double], vec2: Vector[Double])Double
+
+
+PROBLEM 2
+=========
+
+scala> def optionParser(seq:Seq[Option[Any]]):Option[Any] = Option( if(seq contains Option(None)){None} else {seq.flatten})
+optionParser: (seq: Seq[Option[Any]])Option[Any]
+
+scala> optionParser(seq)
+res35: Option[Any] = Some(List(1, 2, 3))
+
+scala> optionParser(badSeq)
+res36: Option[Any] = Some(None)
+
+PROBLEM 3
+=========
+
++----------
+Thoughts: On making the stream, Stream a continous stream of random numbers from 0-n (0 because we want to include the first index) and then ensure that there are no duplicates in the stream and take the first n values. Then map our stream with the sequence given.
++----------
+
+scala> import scala.util.Random._
+import scala.util.Random._
+
+scala> val seq = Seq(10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
+seq: Seq[Int] = List(10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
+
+scala> def sampleWithoutReplacement[T](seq:Seq[T],n:Int) = {
+     |   require(seq.length >= n);
+     |   val strm = Stream.continually(nextInt(seq.length)).distinct.take(n).force;
+     |   strm.map(x => seq(x)).force
+     | }
+sampleWithoutReplacement: [T](seq: Seq[T], n: Int)scala.collection.immutable.Stream[T]
+
+scala> sampleWithoutReplacement(seq, 4)
+res9: scala.collection.immutable.Stream[Int] = Stream(10, 100, 50, 80)
+
+scala> sampleWithoutReplacement(seq, 4)
+res10: scala.collection.immutable.Stream[Int] = Stream(90, 40, 80, 60)
+
+scala> sampleWithoutReplacement(seq, 4)
+res11: scala.collection.immutable.Stream[Int] = Stream(90, 20, 100, 40)
+
+scala> sampleWithoutReplacement(seq, 4)
+res12: scala.collection.immutable.Stream[Int] = Stream(10, 70, 100, 90)
