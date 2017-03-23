@@ -93,6 +93,19 @@ vecSumSquareDiff: (vec1: Vector[Double], vec2: Vector[Double])Double
 PROBLEM 2
 =========
 
++----------
+Thoughts: So we can use .flatten to flatten the list of options to just a list, but we need to find out if there is a Option(None) first and if there is just return Option(None)
++----------
+
+scala> def optionParser(seq:Seq[Option[Any]]):Option[Any] = Option( if(seq contains Option(None)){None} else {seq.flatten})
+optionParser: (seq: Seq[Option[Any]])Option[Any]
+
+scala> optionParser(seq)
+res35: Option[Any] = Some(List(1, 2, 3))
+
+scala> optionParser(badSeq)
+res36: Option[Any] = Some(None)
+
 PROBLEM 3
 =========
 
