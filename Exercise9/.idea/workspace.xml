@@ -618,6 +618,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< Updated upstream
         </state>
       </provider>
     </entry>
@@ -636,13 +637,20 @@
             <element signature="imports" expanded="true" />
           </folding>
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/simple/Exercise9.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+        <state relative-caret-position="200">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+>>>>>>> Stashed changes
           <folding>
 <<<<<<< Updated upstream
             <element signature="e#0#8449#0" expanded="true" />
@@ -652,6 +660,7 @@
 =======
             <element signature="e#0#1576#0" expanded="true" />
             <element signature="imports" expanded="true" />
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
           </folding>
         </state>
@@ -751,6 +760,8 @@
 <<<<<<< Updated upstream
             <element signature="e#7454#7455#0" expanded="true" />
             <element signature="e#7498#7499#0" expanded="true" />
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
           </folding>
