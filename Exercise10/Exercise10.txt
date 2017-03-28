@@ -1,0 +1,55 @@
+/*
+ *	Keenan Johnstone
+ *	11119412
+ *	kbj182
+ *	cmpt470 Exercise 10
+ */
+
+ So I built the project in ItelliJ and imported the given library into the build path.
+
+ To time the code I created a stopwatch in Simulate and started it athe begining and ended it before the code stops (A bit hacky, but the community version of intelliJ doesnt come with profiling tools)
+
+ I also removed the print lines every X steps to avoid slowwing down the program
+
+public void simulate(String []args)
+{
+	//Start timer
+    StopWatch stopwatch = new StopWatch();
+    stopwatch.start();
+    
+    ImmutablePair<Integer, ComputeLivenessRule> iterationCountAndRulePair = determineArguments(args);
+    //System.out.print(iterationCountAndRulePair);
+    
+    int countIterations = DEFAULT_ITERATION_COUNT;
+    ComputeLivenessRule livenessRule = new ComputeLivenessClassic();
+            
+    readState("input.txt", bufferEven); 
+    int [][]finalState = runScenario(countIterations, livenessRule);	
+    writeState("output.txt", finalState);
+
+    //End Timer
+    stopwatch.stop();
+    System.out.println("Time taken: " + stopwatch.getTime() + "ms");
+    
+    System.exit(0);
+    
+}
+
+This was the result:
+
+Time taken: 8358ms
+
+Here are the times from the Other programs in C over 100k Iterations
+
+ File Used          None         O2          O3
++---------------+-----------+-----------+----------+
+|Ugly           |  11.754s  |  3.840s   |  3.924s  |
+|               |           |           |          |
+|Refactored     | 1m11.711s | 16.512s   |  6.709s  |
+|               |           |           |          |
+|Flexible       | 1m15.305s | 15.287s   |  5.615s  |
+|               |           |           |          |
+|Java           |  8.358s   |    N/A    |   N/A    |
++---------------+-----------+-----------+----------+
+
+The Java code seems to run singnifcantly quicker without optimization, but once optimized with O3 The C code runs faster
