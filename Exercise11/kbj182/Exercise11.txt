@@ -1,0 +1,41 @@
+/*
+ *	Keenan Johnstone
+ *	11119412
+ *	kbj182
+ *	cmpt470 Exercise 11
+ */
+
+So I began by trying out regex pattern matching with an example I found online:
+
+scala> val pattern = "([0-9]+) ([A-Za-z]+)".r
+pattern: scala.util.matching.Regex = ([0-9]+) ([A-Za-z]+)
+
+scala> val pattern(count, fruit) = "100 Bananas"
+count: String = 100
+fruit: String = Bananas
+
+Next I need a way of simply checking if it matched the format first
+
+scala> "100 Bananas" match {case pattern(_*) => true case _ => false}
+res0: Boolean = true
+
+So the plan now is to define our 4 regex patterns, iterate through each line of dates.txt, check which pattern it's using and parse the information
+
+For the String months, we can use a case statement defined elsewhere to convert it to a digit
+
+==========
+HOW TO RUN
+==========
+
+scala> :load Exercise11.scala
+
+Loading Exercise11.scala...
+import scala.io.Source
+parseFile: (str: String)Unit
+parseYearMonthDay: (str: String)Any
+mon3TextToInt: (str: String)Int
+monFullTextToInt: (str: String)Int
+
+scala> parseFile("Dates.txt") 
+
+NOTE: the dates.txt happened to be in the same folder I was running scala from, you may have to put the whole pathfile to get it to work
