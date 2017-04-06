@@ -1,0 +1,174 @@
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [10000, Classic]
+Start Time: 04/04/17 19:22:13
+End Time: 04/04/17 19:22:13
+Total Run Time: 643ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [20000, Classic]
+Start Time: 04/04/17 19:22:35
+End Time: 04/04/17 19:22:37
+Total Run Time: 1186ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:23:14
+End Time: 04/04/17 19:23:15
+Total Run Time: 664ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:27:34
+End Time: 04/04/17 19:27:35
+Total Run Time: 671ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:29:15
+End Time: 04/04/17 19:29:15
+Total Run Time: 656ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:31:04
+End Time: 04/04/17 19:31:04
+Total Run Time: 643ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:31:30
+End Time: 04/04/17 19:31:31
+Total Run Time: 628ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:31:49
+End Time: 04/04/17 19:31:49
+Total Run Time: 642ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:31:56
+End Time: 04/04/17 19:31:57
+Total Run Time: 658ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:32:45
+End Time: 04/04/17 19:32:46
+Total Run Time: 663ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:34:02
+End Time: 04/04/17 19:34:03
+Total Run Time: 657ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:34:32
+End Time: 04/04/17 19:34:32
+Total Run Time: 661ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:34:43
+End Time: 04/04/17 19:34:44
+Total Run Time: 647ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:39:04
+End Time: 04/04/17 19:39:05
+Total Run Time: 638ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:41:49
+End Time: 04/04/17 19:41:50
+Total Run Time: 690ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:44:02
+End Time: 04/04/17 19:44:03
+Total Run Time: 323ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:44:26
+End Time: 04/04/17 19:44:26
+Total Run Time: 328ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:45:26
+End Time: 04/04/17 19:45:26
+Total Run Time: 658ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 19:45:36
+End Time: 04/04/17 19:45:36
+Total Run Time: 660ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 21:43:26
+End Time: 04/04/17 21:43:27
+Total Run Time: 654ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 21:43:45
+End Time: 04/04/17 21:43:45
+Total Run Time: 662ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 21:44:52
+End Time: 04/04/17 21:44:53
+Total Run Time: 668ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 21:46:00
+End Time: 04/04/17 21:46:01
+Total Run Time: 1498ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 04/04/17 21:47:37
+End Time: 04/04/17 21:47:38
+Total Run Time: 1534ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 05/04/17 10:12:38
+End Time: 05/04/17 10:12:40
+Total Run Time: 1658ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 05/04/17 10:16:20
+End Time: 05/04/17 10:16:27
+Total Run Time: 6647ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 05/04/17 10:16:45
+End Time: 05/04/17 10:16:51
+Total Run Time: 6447ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 05/04/17 13:14:00
+End Time: 05/04/17 13:15:52
+Total Run Time: 111520ms
+========================================
+Conway's Game of Life Simulation started
+Arguments given: [5000, Liveness2To4]
+Start Time: 05/04/17 13:19:32
+End Time: 05/04/17 13:22:12
+Total Run Time: 160800ms

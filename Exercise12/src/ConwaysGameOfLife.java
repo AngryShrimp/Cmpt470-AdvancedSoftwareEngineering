@@ -15,7 +15,7 @@ public class ConwaysGameOfLife
 {
     final int ROW_COUNT=100;
     final int COL_COUNT=100;
-    final int REPORTING_FREQUENCY=1000;
+    final int REPORTING_FREQUENCY=2000;
     final int DEFAULT_ITERATION_COUNT=1000;
     final int CELL_COUNT=(ROW_COUNT * COL_COUNT);
 
